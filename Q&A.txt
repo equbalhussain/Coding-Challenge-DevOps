@@ -1,0 +1,34 @@
+Q:what would a logging solution look like in a Kubernetes environment? Describe how the components of a possible logging solution work together.
+Ans: We can use loki for logs findings alongwith grafana for UI. So this can work as logging solution. We can also use ELK for logging. 
+Promtrail is component of loki which works as an agent and ships the local logs to private grafana loki.
+
+Q:How can Kubernetes board means be used to ensure that the application can handle a large number of requests?
+Ans: We can allocate reources and limits to our deployments according to which it can handle the traffic. Apart from that we can setup horizontal pod autoscalling which will create more pods to handle the request if threshold limits for old pods are reached.
+
+Q: How can you detect errors in templating before deployment?
+Ans: Our first priority should be checking whether the cluster is healthy or not .After that check the yml manifest using the yamllint whether it have some issues or not. If everything is good then we can move forward to make deployment.
+
+Q: what are the options to roll back a failed deployment to a previous version?
+Ans: We can use rollout command in kubernetes to rollback to a previous version where we need to provide the version to which our application should be rollback to.
+We can use the following commad:
+kubectl rollout deployment <deployment name> -n <namespace> --revision=<revision_no. to which app shuld be rollbacked>
+
+Q: what metrics does the demo application offer?
+Ans: We created the metric which returns the number of cpu cores as the result. Snap is already added in technical guidelines.
+
+Q:which CI/CD tool would be your tool of choice?
+Ans: I always choose jenkins for cicd as it is opensource,easy to use and large numebr of plugins are there using which we can tackle regarding the application types .
+
+-------------------------------------
+
+Q.how do I put the applications behind an ingress controller and what are ingress controllers used for?
+Ans: We can put application behind ingress using the ingress load balancer such as nginx ingress or alb ingress so that the application can be used from internet. In kubernetes ingress is used for exposing the application outside cluster and routing the traffic if using microservice architecture.
+
+Q:how would alerting in the Kubernetes cluster look like? What are the options? What options are there for filling the TSDB (Time Series Database) of a Prometheus server with metrics
+Ans: For alerting you can refer technical guideline. Multiple options are there such as telegram bot,slack notfications and mail notification using smtp. We can store the data locally and remotely also if required like s3 buckets.
+
+Q:What options are there for storing sensitive data such as secrets in a GIT repository and which one would you choose?
+Ans As per my understanding only one way is there to store the secrets which is under repository settings where we can store our secrets.
+
+Q:What are the options for completely removing sensitive data that was wrongly stored in plain text in the GIT repository?
+Ans: We need to remove that file from git repository and then adding that file in .gitignore to keep safe for future so that it will not be pushed there in repository.
