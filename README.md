@@ -1,6 +1,6 @@
 ## Files description : 
 
-DevOps Coding Challenge: The assingment which is supposed to be completed by me and also completed in 3 hours.
+DevOps Coding Challenge: The assingment which is supposed to be completed by me and also completed in 2.5 hours.
 
 Q&A: Answers for the question asked .
 
